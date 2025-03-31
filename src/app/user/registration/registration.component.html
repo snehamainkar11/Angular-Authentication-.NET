@@ -1,0 +1,68 @@
+<!-- Login Header -->
+<div class="mb-4">
+  <h2 class="text-success">Sign Up</h2>
+</div>
+
+<!-- Registration Form -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <!-- Full Name Input -->
+  <div class="mb-3">
+    <input type="text" class="form-control form-control-lg" placeholder="Full name" formControlName="fullname" />
+    <div class="text-danger" *ngIf="hasDisplayableError('fullname') && form.controls['fullname'].hasError('required')">
+      Please enter your full name
+    </div>
+  </div>
+
+  <!-- Email Input -->
+  <div class="mb-3">
+    <input type="email" class="form-control form-control-lg" placeholder="Email" formControlName="email" />
+    <div class="text-danger" *ngIf="hasDisplayableError('email')">
+      <div *ngIf="form.controls['email'].hasError('required')">
+        Please enter your email
+      </div>
+      <div *ngIf="form.controls['email'].hasError('email')">
+        Please enter a valid email
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Input -->
+  <div class="mb-3">
+    <input type="password" class="form-control form-control-lg" placeholder="Password" formControlName="password" />
+    <div class="text-danger" *ngIf="hasDisplayableError('password')">
+      <ng-container [ngSwitch]="form.controls['password'].errors | firstkey">
+        <div *ngSwitchCase="'required'">Please enter your password</div>
+        <div *ngSwitchCase="'minlength'">At least 6 characters required</div>
+        <div *ngSwitchCase="'pattern'">One or more special characters required</div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Confirm Password Input -->
+  <div class="mb-3">
+    <input type="password" class="form-control form-control-lg" placeholder="Confirm Password" formControlName="confirmPassword" />
+    <div class="text-danger" *ngIf="hasDisplayableError('confirmPassword') && form.controls['confirmPassword'].hasError('passwordMismatch')">
+      Passwords do not match
+    </div>
+  </div>
+
+  <!-- Terms of Service Checkbox -->
+  <div class="form-check d-flex justify-content-center mb-5">
+    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+    <label class="form-check-label">
+      I agree to all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+    </label>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="d-flex justify-content-center">
+    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success w-100 rounded-3">Register</button>
+  </div>
+
+  <!-- Login Redirect -->
+  <p class="text-center text-muted mt-5 mb-0">
+    Already have an account? <a routerLink="/signin" class="fw-bold text-success"><u>Login here</u></a>
+  </p>
+
+</form>

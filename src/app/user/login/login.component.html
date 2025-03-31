@@ -1,0 +1,30 @@
+<div class="mb-4">
+    <h2 class ="text-success">
+        Sign in
+    </h2>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="mb-4">
+    <input type="text" class="form-control form-control-lg" placeholder="Email" formControlName="email" />      
+    <div class="text-danger" *ngIf="hasDisplayableError('email') && form.controls['email'].hasError('required')">
+        Please enter your email address
+    </div>
+</div>
+
+<div class="mb-4">
+    <input type="password" class="form-control form-control-lg" placeholder="Password" formControlName="password" />      
+    <div class="text-danger" *ngIf="hasDisplayableError('password') && form.controls['password'].hasError('required')">
+        Please enter your password
+    </div>
+</div>
+
+<div class="d-grid gap-2">
+      <button type="submit" class="btn btn-success btn-lg">Login</button>
+  </div>
+
+  <p class="text-center text-muted mt-5 mb-0">New User? <a routerLink="/signup"
+      class="fw-bold text-success"><u>Sign up here</u></a></p>
+
+</form>
+

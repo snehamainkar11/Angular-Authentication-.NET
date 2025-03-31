@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-lg-8 col-md-8 col-sm-10 col-11">
+            <div class="row rounded-4 border-0 shadow-lg p-5 bg-light" style="min-height: 500px;">
+                
+                <!-- Left Section - Image with Green Background -->
+                <div class="col-md-5 d-flex flex-column justify-content-center align-items-center bg-success p-4 rounded-4">
+                    <img src="logo.png" style="max-width: 300px; height: auto;" alt="Logo" class="mb-3"/>
+                    <h2 class="fw-bolder text-white">Auth EC</h2>
+                </div>
+                
+                <!-- Right Section -->
+                <div class="col-md-7 d-flex justify-content-center align-items-center">
+                    <div class="p-5 w-100" [@routerFadeIn] ="getRouteUrl()">
+                        <router-outlet></router-outlet>             
+                    </div>
+                </div>     
+
+            </div>
+        </div>
+    </div>
+</div>
